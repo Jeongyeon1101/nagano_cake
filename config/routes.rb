@@ -8,11 +8,18 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :items
+    root to: 'homes#top'
+    resources :customers, only: [:index, :show, :edit]
+    resources :items, only: [:new, :index, :show, :edit]
+    resources :genres, only: [:index, :edit]
   end
 
   scope module: :public do
     root to: 'homes#top'
+    get 'about' => 'homes#about'
+    get 'customers/my_page' => 'customers#show', as: 'my_page'
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
