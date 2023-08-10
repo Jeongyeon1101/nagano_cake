@@ -18,8 +18,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
-    get '/customers/information/edit' => 'customers#edit', as: 'my_page_edit'
-    get 'orders/complete', as: 'order_complete_path'
+    get 'customers/information/edit' => 'customers#edit', as: 'my_page_edit'
+    get 'customers/confirm', as: 'withdraw_confirm'
+    get 'orders/complete'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index]
     resources :orders, only: [:new, :create, :index, :show]
