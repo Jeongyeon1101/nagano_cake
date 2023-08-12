@@ -1,2 +1,3 @@
-class Address < ApplicationRecord
+class Address <
+  belongs_to :customer
 end

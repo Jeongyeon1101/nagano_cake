@@ -1,5 +1,5 @@
 <h2>会員情報編集</h2>
-<%= form_with model: [:customer, current_customer], url: public_customer_path do |f| %>
+<%= form_with model: @customer, url:my_page_update_path, method: :patch do |f| %>
   <label for="inputLastName">氏名</label>
   <%= f.text_field :last_name, autofocus: true, id:"inputLastName", placeholder:"山田"%>
   <label for="inputFirstName"></label>
@@ -16,12 +16,8 @@
   <%= f.text_field :telephone_number, id:"inputTelephoneNumber", placeholder:"00000000000"%>
   <label for="inputEmail">メールアドレス</label>
   <%= f.text_field :email, id:"inputEmail", placeholder:"sample@example.com"%>
-  <%= f.submit "編集内容を保存" %>　　<%= link_to "退会する", withdraw_confirm_path %>
+  <%= f.submit "編集内容を保存" %>　　<%= link_to "退会する", customers_confirm_path %>
 <% end %>
-
-
-
-
 
 
 

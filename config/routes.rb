@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit]
     resources :items, only: [:new, :index, :show, :edit]
-    resources :genres, only: [:index, :edit]
+    resources :genres, only: [:index, :create, :edit, :update]
   end
 
   scope module: :public do
@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     get 'customers/information/edit' => 'customers#edit', as: 'my_page_edit'
-    get 'customers/confirm', as: 'withdraw_confirm'
+    patch 'customers/information' => 'customers#update', as: 'my_page_update'
+    patch 'customers/withdraw'
+    get 'customers/confirm'
     get 'orders/complete'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index]
