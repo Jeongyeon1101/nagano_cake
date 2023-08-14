@@ -1,10 +1,11 @@
 class Admin::CustomersController < ApplicationController
   def index
-  end  
-  
+    @customers = Customer.page(params[:page])
+  end
+
   def show
-  end  
-  
+  end
+
   def edit
-  end  
+  end
 end

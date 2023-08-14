@@ -34,6 +34,10 @@
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         </li>
+        <%= form_with url: admin_items_path, method: :get do |f| %>
+          <%= f.text_field :item_name, placeholder:"Search" %>
+          <%= f.submit "検索" %>
+        <% end %>
       <% elsif customer_signed_in? %>
         <li>
           <%= link_to "LOGO", root_path %>
@@ -50,6 +54,10 @@
         <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
         </li>
+        <%= form_with url: items_path, method: :get do |f| %>
+          <%= f.text_field :item_name, placeholder:"Search" %>
+          <%= f.submit "検索" %>
+        <% end %>
       <% else %>
         <li>
           <%= link_to "LOGO", root_path %>
