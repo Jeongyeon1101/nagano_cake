@@ -1,4 +1,4 @@
-<h2>商品一覧(全x件)</h2>
+<h2>商品一覧(全<%= Item.count %>件)</h2>
 
 <% @items.each do |item| %>
   <%= link_to item_path(item.id) do %>
@@ -6,7 +6,10 @@
   <% end %>
   <%= item.name %>
   ¥<%= item.add_tax_price.to_s(:delimited) %>
-<% end %>
+<% end %></br>
 
 <%= paginate @items %>
 
+<% @genres.each do |genre| %></br>
+<%= link_to genre.name, items_path(genre_name: genre.name) %>
+<% end %>
