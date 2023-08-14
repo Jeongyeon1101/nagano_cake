@@ -1,7 +1,8 @@
 class Public::ItemsController < ApplicationController
   def index
-    if params[:item_name]
-
+    if params[:search]
+      @items = Item.where("name LIKE ? ", '%' + params[:search] + '%')
+      @items = @items.page(params[:page])
     else
       @items = Item.page(params[:page])
     end
