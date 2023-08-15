@@ -39,6 +39,7 @@
           <%= f.submit "検索" %>
         <% end %>
       <% elsif customer_signed_in? %>
+        <p>ようこそ、<%= current_customer.last_name %>さん！</p>
         <li>
           <%= link_to "LOGO", root_path %>
         </li>

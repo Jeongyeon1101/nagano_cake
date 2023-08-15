@@ -5,7 +5,7 @@
     <%= image_tag item.get_image(200,100) %>
   <% end %>
   <%= item.name %>
-  ¥<%= item.add_tax_price.to_s(:delimited) %>
+  ¥<%= item.with_tax_price.to_s(:delimited) %>
 <% end %></br>
 
 <% @genres.each do |genre| %></br>
