@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index]
     resources :orders, only: [:new, :create, :index, :show]
-    resources :addresses, only: [:index, :edit]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
