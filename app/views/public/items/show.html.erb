@@ -1,6 +1,9 @@
-<%= image_tag @item.get_image(400,300) %>
-<p><%= @item.name %></p>
-<p><%= @item.introduction %></p>
-<p>¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</p>
-<!-- ここに個数選択フォーム -->
-<%= link_to "カートに入れる" %>
+<%= image_tag @item.get_image(400,300) %></br>
+<%= @item.name %></br>
+<%= @item.introduction %></br>
+¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</br>
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.submit "カートに入れる" %>
+<% end %>
