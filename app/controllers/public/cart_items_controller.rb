@@ -20,6 +20,12 @@ class Public::CartItemsController < ApplicationController
     @total = 0
   end
 
+  def update
+    @cart_items = current_customer.cart_items
+    @cart_items.update(cart_item_params)
+    redirect_to cart_items_path
+  end
+
   def destroy_all
     current_customer.cart_items.destroy_all
     redirect_to cart_items_path
