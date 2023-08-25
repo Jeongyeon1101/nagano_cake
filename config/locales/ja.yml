@@ -8,6 +8,18 @@ ja:
         current_address: "ご自身の住所"
         registered_address: "登録済住所から選択"
         new_address: "新しいお届け先"
+      status:
+        wait_payment: '入金待ち'
+        confirm_payment: '入金確認'
+        making: '製作中'
+        preparing_ship: '発送準備中'
+        finish_prepare: '発送済み'
+    order_detail:
+      making_status:
+        not_ready: '製作不可'
+        waiting_to_make: '製作待ち'
+        making: '製作中'
+        finished_making: '製作完了'
   activerecord:
     errors:
       messages:

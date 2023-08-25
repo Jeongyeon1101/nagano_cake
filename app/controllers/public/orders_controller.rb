@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
-    @order.total_payment = 0
+    @total_payment = 0
     @order.shipping_cost = 800
     if params[:order][:select_address] == "registered_address"
       @address = Address.find(params[:order][:address_id])
@@ -23,7 +23,27 @@ class Public::OrdersController < ApplicationController
     else
       @order.save
     end
+    @order_new = Order.new
+    render :confirm
+  end
 
+  def create
+    order = Order.new(order_params)
+    order.save
+    @cart_items = current_customer.cart_items.all
+
+    @cart_items.each do |cart_item|
+      @order_details = OrderDetail.new
+      @order_details.order_id = order.id
+      @order_details.item_id = cart_item.item.id
+      @order_details.price = cart_item.item.with_tax_price
+      @order_details.amount = cart_item.amount
+      @order_details.making_status = 0
+      @order_details.save
+    end
+
+    CartItem.destroy_all
+    redirect_to orders_complete_path
   end
 
   private

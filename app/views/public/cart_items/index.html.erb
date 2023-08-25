@@ -16,13 +16,13 @@
               <% end %>
           </td>
           <td><%= cart_item.subtotal %></td>
-          <% @total += cart_item.subtotal %>
+          <% @total_payment += cart_item.subtotal %>
         </tr>
     <% end %>
     <tr>
     <td><%= link_to "買い物を続ける", items_path %></td>
     <td>合計金額</td>
-    <td><%= @total %></td>
+    <td><%= @total_payment %></td>
     </tr>
     </tbody>
 </table>
