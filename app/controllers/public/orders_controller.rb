@@ -46,6 +46,15 @@ class Public::OrdersController < ApplicationController
     redirect_to orders_complete_path
   end
 
+  def index
+    @orders = current_customer.orders
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: params[:id])
+  end
+
   private
 
   def order_params
