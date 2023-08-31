@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_root_path
     when Customer
-      root_path
+      my_page_path
     end
   end
 
