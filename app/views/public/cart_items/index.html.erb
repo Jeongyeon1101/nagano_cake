@@ -17,6 +17,7 @@
           </td>
           <td><%= cart_item.subtotal %></td>
           <% @total_payment += cart_item.subtotal %>
+          <td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "選択された商品を削除します。よろしいですか？"  %> </td>
         </tr>
     <% end %>
     <tr>
