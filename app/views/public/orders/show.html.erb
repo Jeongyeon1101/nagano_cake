@@ -40,7 +40,8 @@
 <strong>請求情報</strong>
 <table>
   <td>商品合計</td>
-    <td><%= @order.total_payment.to_s(:delimited) %></td>
+    <% @total_payment = @order.total_payment - @order.shipping_cost %>
+    <td><%= @total_payment.to_s(:delimited) %></td>
   </tr>
   <tr>
     <td>配送料</td>
@@ -48,7 +49,6 @@
   </tr>
   <tr>
     <td>ご請求額</td>
-    <% @total_payment = @order.total_payment + @order.shipping_cost %>
-    <td><%= @total_payment.to_s(:delimited) %></td>
+    <td><%= @order.total_payment.to_s(:delimited) %></td>
   </tr>
 </table>

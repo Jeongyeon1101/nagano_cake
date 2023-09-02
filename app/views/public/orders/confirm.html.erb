@@ -28,9 +28,9 @@
     </tbody>
 </table>
 
-<h2>支払方法 <%= @order.payment_method_i18n %></h2>
-<h2>お届け先 <%= @order.address %></h2>
-
+<strong>支払方法</strong> <%= @order.payment_method_i18n %></br>
+<strong>お届け先</strong> 〒<%= @order.postal_code %> <%= @order.address %></br>
+                          <%= @order.name %>
 <%= form_with model: @order_new, url: orders_path do |f| %>
   <%= f.hidden_field :customer_id, :value => current_customer.id %>
   <%= f.hidden_field :payment_method, :value => @order.payment_method %>

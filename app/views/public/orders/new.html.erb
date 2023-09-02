@@ -14,7 +14,7 @@
 　<%= @customer.last_name %><%= @customer.first_name %></br>
 　<%= f.radio_button :select_address, Order.select_addresses.key(1) %>
 　<%= f.label :select_address_registered_address, Order.select_addresses_i18n[:registered_address] %></br>
-　<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></br>
+　<%= f.select :address_id, options_from_collection_for_select(@customer.addresses.all, :id, :address_display) %></br>
 　<%= f.radio_button :select_address, Order.select_addresses.key(2) %>
 　<%= f.label :select_address_new_address, Order.select_addresses_i18n[:new_address] %></br>
 　<label for="inputPostalCode">郵便番号(ハイフンなし)</label>
