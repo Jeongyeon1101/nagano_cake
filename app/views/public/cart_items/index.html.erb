@@ -1,6 +1,7 @@
 <h2>ショッピングカート</h2>
 <% if @cart_items.empty? %>
-  <p>カートは空です</p>
+  <i class="fa-solid fa-cart-shopping fa-5x" style="color: gainsboro;"></i>
+  <p>カートに商品がありません</p>
 <% else %>
 <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "カート内の商品をすべて削除します。よろしいですか？" %>
 <table>

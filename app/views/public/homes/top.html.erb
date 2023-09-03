@@ -8,11 +8,9 @@
 <% @items.each do |item| %>
   <%= link_to item_path(item.id) do %>
     <%= image_tag item.get_image(200,100) %>
-  <% end %>
-  <%= item.name %>
-  ¥<%= item.with_tax_price.to_s(:delimited) %>
-<% end %></br>
-
-<% @genres.each do |genre| %></br>
-<%= link_to genre.name, items_path(genre_name: genre.name) %>
+  <% end %></br>
+  <%= item.name %></br>
+  ¥<%= item.with_tax_price.to_s(:delimited) %></br>
 <% end %>
+
+<%= render 'public/items/list', genres: @genres %>
