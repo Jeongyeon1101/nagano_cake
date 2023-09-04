@@ -1,28 +1,47 @@
-<h2>会員情報編集</h2>
-<%= form_with model: @customer, url:my_page_update_path, method: :patch do |f| %>
-  <label for="inputLastName">氏名</label>
-  <%= f.text_field :last_name, autofocus: true, id:"inputLastName", placeholder:"山田"%>
-  <label for="inputFirstName"></label>
-  <%= f.text_field :first_name, id:"inputFirstName", placeholder:"太郎"%></br>
-  <label for="inputLastNameKana">フリガナ</label>
-  <%= f.text_field :last_name_kana, id:"inputLastNameKana", placeholder:"ヤマダ"%>
-  <label for="inputFirstNameKana"></label>
-  <%= f.text_field :first_name_kana, id:"inputFirstNameKana", placeholder:"タロウ"%></br>
-  <label for="inputPostalCode">郵便番号</label>
-  <%= f.text_field :postal_code, id:"inputPostalCode", placeholder:"0000000"%></br>
-  <label for="inputAddress">住所</label>
-  <%= f.text_field :address, id:"inputAddress", placeholder:"東京都大田区田園調布南565-11"%></br>
-  <label for="inputTelephoneNumber">電話番号</label>
-  <%= f.text_field :telephone_number, id:"inputTelephoneNumber", placeholder:"00000000000"%></br>
-  <label for="inputEmail">メールアドレス</label>
-  <%= f.text_field :email, id:"inputEmail", placeholder:"sample@example.com"%></br>
-  <%= f.submit "編集内容を保存" %>　　<%= link_to "退会する", customers_confirm_path %>
-<% end %>
-
-
-
-
-
-
-
-
+<div class="container">
+  <div class="row mt-3">
+    <h2>会員情報編集</h2>
+  </div>
+  <div class="row mt-3">
+    <table class="table table-borderless">
+      <%= form_with model: @customer, url:my_page_update_path, method: :patch do |f| %>
+      <tr>
+        <td><label for="inputLastName">氏名</label></td>
+        <td>
+          <%= f.text_field :last_name, autofocus: true, id:"inputLastName", placeholder:"山田"%>
+          <label for="inputFirstName"></label>
+          <%= f.text_field :first_name, id:"inputFirstName", placeholder:"太郎"%>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="inputLastNameKana">フリガナ</label></td>
+        <td>
+          <%= f.text_field :last_name_kana, id:"inputLastNameKana", placeholder:"ヤマダ"%>
+          <label for="inputFirstNameKana"></label>
+          <%= f.text_field :first_name_kana, id:"inputFirstNameKana", placeholder:"タロウ"%>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="inputPostalCode">郵便番号</label></td>
+        <td><%= f.text_field :postal_code, id:"inputPostalCode", placeholder:"0000000"%></td>
+      </tr>
+      <tr>
+        <td><label for="inputAddress">住所</label></td>
+        <td><%= f.text_field :address, id:"inputAddress", placeholder:"東京都大田区田園調布南565-11"%></td>
+      </tr>
+      <tr>
+        <td><label for="inputTelephoneNumber">電話番号</label></td>
+        <td><%= f.text_field :telephone_number, id:"inputTelephoneNumber", placeholder:"00000000000"%></td>
+      </tr>
+      <tr>
+        <td><label for="inputEmail">メールアドレス</label></td>
+        <td><%= f.text_field :email, id:"inputEmail", placeholder:"sample@example.com"%></td>
+      </tr>
+      <tr>
+        <td><%= f.submit "編集内容を保存", class: "btn btn-success" %></td>
+        <td><%= link_to "退会する", customers_confirm_path, class: "btn btn-danger" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
