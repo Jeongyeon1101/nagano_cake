@@ -1,27 +1,85 @@
-<h2>注文情報入力</h2>
-
-<%= form_with model: @order, url: orders_confirm_path do |f| %>
-<label>支払方法</label></br>
-  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-  <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %></br>
-  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-  <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %></br>
-<label>お届け先</label></br>
-　<%= f.radio_button :select_address, Order.select_addresses.key(0) %>
-　<%= f.label :select_address_current_address, Order.select_addresses_i18n[:current_address] %></br>
-　〒<%= @customer.postal_code %>
-　<%= @customer.address %>
-　<%= @customer.last_name %><%= @customer.first_name %></br>
-　<%= f.radio_button :select_address, Order.select_addresses.key(1) %>
-　<%= f.label :select_address_registered_address, Order.select_addresses_i18n[:registered_address] %></br>
-　<%= f.select :address_id, options_from_collection_for_select(@customer.addresses.all, :id, :address_display) %></br>
-　<%= f.radio_button :select_address, Order.select_addresses.key(2) %>
-　<%= f.label :select_address_new_address, Order.select_addresses_i18n[:new_address] %></br>
-　<label for="inputPostalCode">郵便番号(ハイフンなし)</label>
-　<%= f.text_field :postal_code, id:"inputPostalCode", placeholder:"0000000" %></br>
-　<label for="inputAddress">住所</label>
-　<%= f.text_field :address, id:"inputAddress", placeholder:"東京都渋谷区代々木代々木神園町0-0" %></br>
-　<label for="inputName">宛名</label>
-　<%= f.text_field :name, id:"inputName", placeholder:"山田太郎" %></br>
-　<%= f.submit "確認画面に進む" %>
-<% end %>
+<div class="container">
+  <div class="row mt-5 ">
+    <h2>注文情報入力</h2>
+  </div>
+  <div class="row mt-3 mb-3">
+    <div class="col-lg-10 mx-auto">
+    <%= form_with model: @order, url: orders_confirm_path do |f| %>
+    <table class="table table-borderless" >
+      <tr>
+        <td><label><strong>支払方法</strong></label></td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+          <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+          <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
+        </td>
+      </tr>
+      <tr>
+        <td><label>お届け先</label></td>
+      </tr>
+      <tr>
+      　<td>
+        　<%= f.radio_button :select_address, Order.select_addresses.key(0) %>
+          <%= f.label :select_address_current_address, Order.select_addresses_i18n[:current_address] %>
+      　</td>
+      </tr>
+      <tr>
+      　<td>
+          〒<%= @customer.postal_code %>
+      　    <%= @customer.address %>
+      　</td>
+      </tr>
+      <tr>
+        <td>
+          <%= @customer.last_name %>
+          <%= @customer.first_name %>
+        </td>
+      </tr>
+      <tr>
+      　<td>
+        　<%= f.radio_button :select_address, Order.select_addresses.key(1) %>
+        　<%= f.label :select_address_registered_address, Order.select_addresses_i18n[:registered_address] %>
+      　</td>
+      </tr>
+      <tr>
+      　<td><%= f.select :address_id, options_from_collection_for_select(@customer.addresses.all, :id, :address_display) %></td>
+      </tr>
+      <tr>
+      　<td>
+      　  <%= f.radio_button :select_address, Order.select_addresses.key(2) %>
+      　  <%= f.label :select_address_new_address, Order.select_addresses_i18n[:new_address] %>
+      　</td>
+      </tr>
+      <tr>
+      　<td>
+          <label for="inputPostalCode">郵便番号(ハイフンなし)</label>
+      　   <%= f.text_field :postal_code, id:"inputPostalCode", placeholder:"0000000" %>
+      　</td>
+      </tr>
+      <tr>
+      　<td>
+      　   <label for="inputAddress">住所</label>
+      　   <%= f.text_field :address, id:"inputAddress", placeholder:"東京都渋谷区代々木代々木神園町0-0" %>
+      　</td>
+      </tr>
+      <tr>
+      　<td>
+      　   <label for="inputName">宛名</label>
+      　   <%= f.text_field :name, id:"inputName", placeholder:"山田太郎" %>
+      　</td>
+      </tr>
+    </table>
+    <div class="row col-sm-3 mt-3 mx-auto">
+      <%= f.submit "確認画面に進む", class: "btn btn-lg btn-primary" %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>
