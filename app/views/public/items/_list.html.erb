@@ -1,3 +1,12 @@
-<% genres.each do |genre| %></br>
-  <%= link_to genre.name, items_path(genre_name: genre.name) %>
-<% end %>
+<table class="table table-hover table-bordered">
+  <thead class="thead-light">
+    <th>ジャンル検索</th>
+  </thead>
+  <% genres.each do |genre| %>
+  <tbody>
+    <tr>
+      <td><%= link_to genre.name, items_path(genre_name: genre.name), class: "text-dark" %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

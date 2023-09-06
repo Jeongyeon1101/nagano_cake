@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row mt-5">
+  <div class="row mt-3">
     <h2>注文履歴詳細</h2>
   </div>
     <table class="table table-borderless">
@@ -61,16 +61,16 @@
         <tr>
           <td><strong>商品合計</strong></td>
           <% @total_payment = @order.total_payment - @order.shipping_cost %>
-          <td><%= @total_payment.to_s(:delimited) %></td>
+          <td><%= @total_payment.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <td><strong>送料</strong></td>
-          <td><%= @order.shipping_cost %></td>
+          <td><%= @order.shipping_cost %>円</td>
         </tr>
         <tr>
           <td><strong>請求金額合計</strong></td>
           <% @order.total_payment %>
-          <td><%= @order.total_payment.to_s(:delimited) %></td>
+          <td><%= @order.total_payment.to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>

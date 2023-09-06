@@ -1,11 +1,32 @@
-<%= image_tag @item.get_image(400,300) %></br>
-<%= @item.name %></br>
-<%= @item.introduction %></br>
-¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</br>
-<%= form_with model: @cart_item, url: cart_items_path do |f| %>
-  <%= f.select :amount, *[1..10] %>
-  <%= f.hidden_field :item_id, :value => @item.id %>
-  <%= f.submit "カートに入れる" %>
-<% end %>
-
-<%= render 'list', genres: @genres %>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-2">
+      <%= render 'list', genres: @genres %>
+    </div>
+    <div class="col-lg-4 mt-5">
+      <%= image_tag @item.get_image(300,200) %></br>
+    </div>
+    <div class="col-lg-6 mt-5">
+      <table class="table table-borderless">
+        <tr>
+          <td><h5><%= @item.name %></h5></td>
+        </tr>
+        <tr>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td><h5>¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</h5></td>
+        </tr>
+        <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+        <tr>
+          <td>
+            <h5><%= f.select :amount, *[1..10] %></h5>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+          </td>
+          <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

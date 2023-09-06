@@ -1,21 +1,22 @@
 <div class="container">
-  <div class="row mt-3">
+  <div class="row mt-5">
     <h2>ジャンル一覧・追加</h2>
   </div>
   <div class="row mt-3">
-    <div class="col-lg-6 ml-2">
+    <div class="col-lg-6">
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
         <label for="inputGenreName">ジャンル名</label>
         <%= f.text_field :name, autofocus: true, id:"inputGenreName", placeholder:"ジャンル名"%>
-        <%= f.submit "新規登録", class: "btn btn-lg btn-success" %>
+        <%= f.submit "新規登録", class: "btn btn-success" %>
       <% end %>
     </div>
+    <div class="col-lg-6"></div>
   </div>
   <div class="row mt-3">
     <div class="col-lg-8 float-left">
       <table class="table table-hover">
-        <thead>
-          <th>ジャンル</th>
+        <thead class="table-active">
+          <th>ジャンル</th><th></th>
         </thead>
         <tbody>
           <% @genres.each do |genre| %>
@@ -27,5 +28,8 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="row mt-3">
+    <%= paginate @genres %>
   </div>
 </div>

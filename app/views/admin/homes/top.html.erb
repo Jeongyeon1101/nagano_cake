@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-3">
     <% if params[:customer_id] %>
-      <h2><%= @customer %>さんの注文履歴</h2>
+      <h2><%= @customer.last_name %> <%= @customer.first_name %>さんの注文履歴</h2>
     <% else %>
       <h2>注文履歴一覧</h2>
     <% end %>
@@ -18,7 +18,10 @@
                 <%= order_detail.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
               <% end %>
           </td>
-          <td><%= order_detail.order.name %></td>
+          <td>
+            <%= order_detail.order.customer.last_name %>
+            <%= order_detail.order.customer.first_name %>
+          </td>
           <td><%= order_detail.amount %></td>
           <td><%= order_detail.order.status_i18n %></td>
         </tr>

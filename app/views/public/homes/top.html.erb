@@ -1,16 +1,29 @@
+<div class="container">
 <%= flash[:notice] %>
-<h2>ようこそ、ながのCAKEへ！<br>
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。</h2>
-
-<h1>新着商品</h1>
-<% @items.each do |item| %>
-  <%= link_to item_path(item.id) do %>
-    <%= image_tag item.get_image(200,100) %>
-  <% end %></br>
-  <%= item.name %></br>
-  ¥<%= item.with_tax_price.to_s(:delimited) %></br>
-<% end %>
-
-<%= render 'public/items/list', genres: @genres %>
+  <div class="row mt-3">
+    <div class="col-lg-2">
+      <%= render 'public/items/list', genres: @genres %>
+    </div>
+    <div class="col-lg-10">
+      <%= image_tag('nagano_cake_top.jpg', size: '900x300') %>
+      <p class="text-center mt-3">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <h2>新着商品</h2>
+  </div>
+  <div class="row mt-3">
+    <% @items.each do |item| %>
+      <%= link_to item_path(item.id) do %>
+        <%= image_tag item.get_image(200,100) %></br>
+      <% end %>
+      <%= item.name %>
+      ¥<%= item.with_tax_price.to_s(:delimited) %>
+    <% end %>
+  </div>
+</div>

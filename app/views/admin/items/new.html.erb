@@ -6,38 +6,38 @@
     <table class="table table-borderless">
       <%= form_with model: @item, url: admin_items_path do |f| %>
       <tr>
-        <td><label for="inputImage">商品画像</label></td>
+        <td><label for="inputImage"><strong>商品画像</strong></label></td>
         <td><%= f.file_field :image, id:"inputImage", accept: "image/*" %></td>
       </tr>
       <tr>
-        <td><label for="inputItemName">商品名</label></td>
+        <td><label for="inputItemName"><strong>商品名</strong></label></td>
         <td><%= f.text_field :name, id:"inputItemName" %></td>
       </tr>
       <tr>
-        <td><label for="inputIntroduction">商品説明</label></td>
+        <td><label for="inputIntroduction"><strong>商品説明</strong></label></td>
         <td><%= f.text_area :introduction, id:"inputIntroduction" %></td>
       </tr>
       <tr>
-        <td><label>ジャンル</label></td>
+        <td><label><strong>ジャンル</strong></label></td>
         <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
       </tr>
       <tr>
-        <td><label for "inputPrice">税抜価格</label></td>
+        <td><label for "inputPrice"><strong>税抜価格</strong></label></td>
         <td><%= f.text_field :price, id:"inputPrice" %></td>
       </tr>
       <tr>
-        <td><label>販売ステータス</label></td>
+        <td><label><strong>販売ステータス</strong></label></td>
         <td>
           <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active_true, "販売中" %>
+          <strong><%= f.label :is_active_true, "販売中" %></strong>
           <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active_false, "販売停止中" %>
+          <strong><%= f.label :is_active_false, "販売停止中" %></strong>
         </td>
       </tr>
-      <tr>
-        <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
-      </tr>
+    </table>
+      <div class="row col-sm-3 mt-3 mx-auto">
+        <%= f.submit "新規登録", class: "btn btn-lg btn-success" %>
+      </div>
       <% end %>
-    </div>
   </div>
 </div>

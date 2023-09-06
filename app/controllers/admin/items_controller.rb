@@ -13,9 +13,9 @@ class Admin::ItemsController < ApplicationController
   def index
     if params[:search]
       @items = Item.where("name LIKE ? ", '%' + params[:search] + '%')
-      @items = @items.page(params[:page])
+      @items = @items.page(params[:page]).per(10)
     else
-      @items = Item.page(params[:page])
+      @items = Item.page(params[:page]).per(10)
     end
   end
 
