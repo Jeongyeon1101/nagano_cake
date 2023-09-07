@@ -17,13 +17,18 @@
   <div class="row mt-3">
     <h2>新着商品</h2>
   </div>
-  <div class="row mt-3">
+  <div class="row mt-3 mx-auto">
     <% @items.each do |item| %>
+    <div class="col-lg-3">
       <%= link_to item_path(item.id) do %>
-        <%= image_tag item.get_image(200,100) %></br>
+        <%= image_tag item.get_image(200,100) %>
       <% end %>
-      <%= item.name %>
-      ¥<%= item.with_tax_price.to_s(:delimited) %>
+      <p><%= item.name %></p>
+      <p>¥<%= item.with_tax_price.to_s(:delimited) %></p>
+    </div>
     <% end %>
+  </div>
+  <div class="row mt-3 float-right">
+    <%= link_to "もっと見る", items_path, class: "btn btn-outline-secondary" %>
   </div>
 </div>

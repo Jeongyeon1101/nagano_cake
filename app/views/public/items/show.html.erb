@@ -17,16 +17,20 @@
         <tr>
           <td><h5>¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</h5></td>
         </tr>
-        <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-        <tr>
-          <td>
-            <h5><%= f.select :amount, *[1..10] %></h5>
-            <%= f.hidden_field :item_id, :value => @item.id %>
-          </td>
-          <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
-        </tr>
-        <% end %>
       </table>
+      <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td>
+              <h5><%= f.select :amount, *[1..10] %></h5>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.submit "カートに入れる", class: "btn btn-success float-right" %></td>
+          </tr>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
   <div class="row mt-3">
     <div class="col-lg-8">
       <table class="table table-hover table-bordered">
-        <thead class="thead-light">
+        <thead class="table-active">
           <th>商品名</th><th>単価(税込)</th><th>数量</th><th>小計</th>
         </thead>
         <tbody>
@@ -24,14 +24,14 @@
     <div class="col-lg-4">
       <table class="table table-hover table-bordered">
         <tr>
-          <td><strong>送料</strong></td>
+          <td class="table-active"><strong>送料</strong></td>
           <td><%= @order.shipping_cost %></td>
         </tr>
-          <td><strong>商品合計</strong></td>
+          <td class="table-active"><strong>商品合計</strong></td>
           <td><%= @total_payment.to_s(:delimited) %></td>
         </tr>
         <tr>
-          <td><strong>請求金額</strong></td>
+          <td class="table-active"><strong>請求金額</strong></td>
           <% @total_payment_plus = @total_payment + @order.shipping_cost %>
           <td><%= @total_payment_plus.to_s(:delimited) %></td>
         </tr>

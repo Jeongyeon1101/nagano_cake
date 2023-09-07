@@ -14,7 +14,7 @@
   <body>
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+        <div class="container sticky-top">
           <a class="navbar-brand p-3" href="/"><%= image_tag('nagano_cake_logo.jpg', size: '90x90') %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,5 +99,26 @@
       </nav>
     </header>
     <%= yield %>
+    <footer class="bg-light shadow-sm text-secondary mt-5 pt-5 pb-4">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <p>NaganoCake</p>
+            <%= image_tag('nagano_cake_logo.jpg', size: '50x50') %>
+          </div>
+          <div class="col-md-8">
+            <h6 class="text-secondary mt-2 mb-3">Link</h6>
+            <ul class="p-0 list-unstyled">
+              <li>
+                <a href="" title="About" class="text-secondary">会社概要</a>
+              </li>
+              <li>
+                <a href="" title="License informations" class="text-secondary">プライバシーポリシー</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
