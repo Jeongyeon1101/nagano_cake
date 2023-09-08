@@ -3,7 +3,7 @@ class Admin::HomesController < ApplicationController
   def top
     if params[:customer_id]
       @customer = Customer.find(params[:customer_id])
-      @orders = @customer.orders.page(params[:page]).reverse_order
+      @orders = @customer.orders.page(params[:page])
       #@orders = Customer.find_by(id: params[:customer_id]).orders
       #@orders.each do |order|
         #@order_details = order.order_details
@@ -11,7 +11,7 @@ class Admin::HomesController < ApplicationController
       #@order_details = @order_details.page(params[:page])
       #@customer = Customer.find_by(id: params[:customer_id])
     else
-      @order_details = OrderDetail.page(params[:page])
+      @orders = Order.page(params[:page])
     end
   end
 end

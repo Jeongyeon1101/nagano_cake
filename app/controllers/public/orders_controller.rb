@@ -32,7 +32,6 @@ class Public::OrdersController < ApplicationController
     order.customer_id = current_customer.id
     order.save!
     @cart_items = current_customer.cart_items.all
-
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
       @order_detail.order_id = order.id
