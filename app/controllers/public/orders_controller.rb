@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "current_address"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
     else
       @order.save
     end
@@ -46,7 +46,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page]).per(5)
   end
 
   def show

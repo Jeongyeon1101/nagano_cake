@@ -2,6 +2,16 @@
   <div class="row mt-3">
     <h2>商品新規登録</h2>
   </div>
+  <% if @item.errors.any? %>
+  <div class="row mt-3">
+    <h5><%= @item.errors.count %>件のエラーが発生しました</h5>
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="row mt-3">
     <div class="col-lg-10">
     <%= form_with model: @item, url: admin_items_path do |f| %>

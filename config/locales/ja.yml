@@ -1,4 +1,11 @@
 ja:
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
   enums:
     order:
       payment_method:
@@ -21,6 +28,18 @@ ja:
         making: '製作中'
         finished_making: '製作完了'
   activerecord:
+    attributes:
+      genre:
+        name: ジャンル名
+      item:
+        image: 商品画像
+        name: 商品名
+        introduction: 商品説明
+        price: 税抜価格
+      address:
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

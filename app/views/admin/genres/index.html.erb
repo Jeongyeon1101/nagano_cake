@@ -2,6 +2,16 @@
   <div class="row mt-5">
     <h2>ジャンル一覧・追加</h2>
   </div>
+  <% if @genre.errors.any? %>
+  <div class="row mt-3">
+    <h5><%= @genre.errors.count %>件のエラーが発生しました</h5>
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="row mt-3">
     <div class="col-lg-6">
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
@@ -30,10 +40,10 @@
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-lg-5"></div>
-    <div class="col-lg-2">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
       <%= paginate @genres %>
     </div>
-    <div class="col-lg-5"></div>
+    <div class="col-lg-4"></div>
   </div>
 </div>

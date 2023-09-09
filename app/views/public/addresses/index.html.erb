@@ -2,9 +2,19 @@
   <div class="row mt-5">
     <h2>配送先登録/一覧</h2>
   </div>
+  <% if @address.errors.any? %>
+  <div class="row mt-3">
+    <h5><%= @address.errors.count %>件のエラーが発生しました</h5>
+    <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="row-mt-3">
+    <%= form_with model: @address, url: addresses_path do |f| %>
     <table class="table table-borderless" scope="col" style="width: 70%">
-      <%= form_with model: @address, url: addresses_path do |f| %>
       <tr>
         <td><label for="inputPostalCode"><strong>郵便番号(ハイフンなし)</strong></label></td>
         <td><%= f.text_field :postal_code, id:"inputPostalCode" %></td>
@@ -20,8 +30,8 @@
       <tr>
         <td><%= f.submit "新規登録", class: "btn btn-lg btn-success" %></td>
       </tr>
-      <% end %>
     </table>
+    <% end %>
   </div>
   <div class="row mt-3">
     <table class="table table-hover" scope="col" style="width: 70%">
@@ -36,10 +46,16 @@
           <td><%= address.name %></td>
           <td class="float-right"><%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %></td>
           <td><%= link_to "削除する", address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
-
         </tr>
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="row mt-3">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <%= paginate @addresses %>
+    </div>
+    <div class="col-lg-4"></div>
   </div>
 </div>

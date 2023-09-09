@@ -3,14 +3,19 @@ class Public::AddressesController < ApplicationController
   def index
     @customer = current_customer
     @address = Address.new
-    @addresses = @customer.addresses
+    @addresses = @customer.addresses.page(params[:page]).per(5)
   end
 
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      redirect_to addresses_path
+    else
+      @customer = current_customer
+      @addresses = @customer.addresses.page(params[:page]).per(5)
+      render :index
+    end
   end
 
   def edit
